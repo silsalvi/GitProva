@@ -51,7 +51,7 @@ public class login extends HttpServlet {
 		doGet(request, response);
 		String password= request.getParameter("password");
 		String user =request.getParameter("username");
-		response.getWriter().append("User:"+user+"\npassword:"+password);
+		System.out.println("User:"+user+"\npassword:"+password);
 		
 		db_connection c = new db_connection();
 		Connection con = c.db();
@@ -65,6 +65,7 @@ public class login extends HttpServlet {
 			{ 
 				System.out.print("ok");
 				response.getWriter().append("Acceso consentito");
+				response.sendRedirect("benvenuto.html");
 
 			} 
 			else 
