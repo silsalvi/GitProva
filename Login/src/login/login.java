@@ -2,8 +2,8 @@ package login;
 
 import java.io.IOException;
 
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,23 +53,8 @@ public class login extends HttpServlet {
 		String user =request.getParameter("username");
 		response.getWriter().append("User:"+user+"\npassword:"+password);
 		
-		Connection con = null;
-		String url = "jdbc:mysql://localhost/";
-		String db = "prova";
-		String driver = "com.mysql.jdbc.Driver";
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}  
-
-		try {
-			con = DriverManager.getConnection(url + db, "root", "");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		db_connection c = new db_connection();
+		Connection con = c.db();
 		try {
 			Statement st = con.createStatement();
 			String sql = "SELECT * FROM utenti where user='"+user+"' && password='"+password+"'";
