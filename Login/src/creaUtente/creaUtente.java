@@ -51,7 +51,7 @@ public class creaUtente extends HttpServlet {
 			pstmt.setString(1, user);
 			pstmt.setString(2, password);
 			if(pstmt.executeUpdate() > 0)
-				pw.print("<html><body><h3>utente inserito.</h3></body></html>");
+				pw.print("<html><body><h2>utente inserito.</h2></body></html>");
 			else
 				pw.print("<html><body><h3>utente non inserito.</h3></body></html>");
 		}catch (IllegalArgumentException | SQLException e) {
